@@ -30,17 +30,18 @@
             </div>
         </div>
     </div>
-    <form id="forma">
+    <form id="forma" action="" onsubmit="return false;">
         <div class="agregar">
             <div class="agregar_contenedor">
                 <select class="agregar_tipo" id="tipo">
                     <option value="ingreso" selected> + </option>
                     <option value="egreso" > - </option>
                 </select>
-                <input type="text" id="agregar_descripcion" placeholder="descripcion" id="descripcion"></input>
-                <input type="number" id="agregar_valor" placeholder="valor" step="any"></input>
-                <button class="agregar_btn">
-                    <ion-icon name="checkmark-circle-outline" onclick="agregarDato()"></ion-icon>
+                <input type="text" class="agregar_descripcion" placeholder="Agregar Descripcion" id="descripcion"/>
+                <input type="number" class="agregar_valor" placeholder="Valor" id ='valor' step="any"/>
+                <button class="agregar_btn" onclick='agregarDato()'>
+
+                    <ion-icon name="checkmark-circle-outline" ></ion-icon>
                 </button>
             </div>
         </div>
@@ -55,7 +56,7 @@
                     <div class="elemento_valor">+2,200.00</div>
                     <div class="elemento_eliminar">
                         <button class="elemento_eliminar--btn">
-                            <ion-icon name="close-circle-outline" onclick="eliminarIngreso()"></ion-icon>>
+                            <ion-icon name="close-circle-outline" onclick='eliminarIngreso()'></ion-icon>>
                         </button>
                     </div>
                 </div>
@@ -66,7 +67,7 @@
                         <div class="elemento_valor"> +1,500.00</div>
                         <div class="elemento_eliminar">
                             <button class="elemento_eliminar--btn">
-                                <ion-icon name="close-circle-outline" onclick="eliminarIngreso()"></ion-icon>>
+                                <ion-icon name="close-circle-outline" onclick='eliminarIngreso()'></ion-icon>>
                             </button>
                         </div>
                 </div>      
@@ -84,7 +85,7 @@
                 </div>  
                     <div class="elemento_eliminar">
                         <button class="elemento_eliminar--btn">
-                            <ion-icon name="close-circle-outline" onclick="eliminarEgreso()"></ion-icon>>
+                            <ion-icon name="close-circle-outline" onclick='eliminarEgreso()'></ion-icon>
                         </button>
                     </div>
                 </div>
@@ -96,7 +97,7 @@
                     <div class="elemento_porcentaje">9%</div>
                     <div class="elemento_eliminar">
                         <button class="elemento_eliminar--btn">
-                            <ion-icon name="close-circle-outline" onclick="eliminarEgreso()"></ion-icon>>
+                            <ion-icon name="close-circle-outline" onclick='eliminarEgreso()'></ion-icon>
                         </button>
                     </div>
                 </div>

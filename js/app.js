@@ -18,6 +18,7 @@ ingresos.push(new Ingreso('Salario', 20000));
 ingresos.push(new Ingreso('Venta auto', 50000));
 egresos.push(new Egreso('Renta', 4000));
 egresos.push(new Egreso('Ropa', 800));
+ingresos.push(new Ingreso('casa', 1000));
 
 const formatoMoneda = (valor) => {
   return valor.toLocaleString("es-MX", {style: "currency", currency: "MXN", minimumFractionDigits: 2});
@@ -91,10 +92,10 @@ const crearIngresoHTML = (ingreso) => {
       <div class="elemento_descripcion">${egreso.descripcion}</div>
       <div class="derecha limpliarEstilos">
           <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
-          <div class="elemento_porcentaje">${egreso.porcentajeEgreso}</div>
+          <div class="elemento_porcentaje">${formatoPorcentaje(porcentajeEgreso)}</div>
           <div class="elemento_eliminar">
               <button class="elemento_eliminar--btn">
-                  <ion-icon name="close-circle-outline" onclick="eliminarEgreso(${egreso.id})"></ion-icon>
+                  <ion-icon name="close-circle-outline" onclick='eliminarEgreso(${egreso.id})'></ion-icon>
               </button>
           </div>
       </div>
@@ -122,45 +123,28 @@ const crearIngresoHTML = (ingreso) => {
     egresos.splice(indiceEliminar, 1);
     cargarCabecero();
     cargarEgresos();
-}
+    }
 
 //avance 4
-const agregarDato = () => {
-  let form = document.querySelector('#forma');
-  let tipo = form.querySelector('#tipo').value;
-  let descripcion = form.querySelector('#agregar_descripcion');
-  let valor = form.querySelector('#agregar_valor');
-  
-  if(descripcion !== "" && valor !== ""){
-    if(tipo === tipo.ingreso){
-      ingresos.push(new Ingreso(descripcion, valor));
-    }if(tipo === tipo.egreso){
-      egresos.push(new Egreso(descripcion, valor));
-    }
-  }else{
-     alert("los campos estan vacios!!")
+let agregarDato = () => {
+  let forma = document.forms['forma'];
+  let tipo = forma['tipo'];
+  let descripcion = forma['descripcion'];
+  let valor = forma['valor'];
+  if(descripcion.value !== '' && valor.value !== ''){
+      if(tipo.value === 'ingreso'){
+          ingresos.push(new Ingreso(descripcion.value, +valor.value));
+          cargarCabecero();
+          cargarIngresos();
+
+      }
+      else if(tipo.value === 'egreso'){
+          egresos.push(new Egreso(descripcion.value, +valor.value));
+          cargarCabecero();
+          cargarEgresos();
+      }
   }
 }
-
-// const agregarDato = () => {
-//   let form =  document.getElementById('#forma');
-//   let tipo = document.getElementById('#tipo').value;
-//   let descripcion = document.getElementById('#agregar_descripcion').value;
-//   let valor = document.getElementById('#agregar_valor').value;
-  
-//   if(descripcion !== "" && valor !== ""){
-//     if(tipo === 'ingreso'){
-//       ingresos.push(new ingresos(descripcion, valor));
-//       cargarCabecero();
-//       cargarIngresos();
-//     }
-//     if(tipo === 'gasto'){
-//       egresos.push(new egresos(descripcion, valor));
-//       cargarCabecero();
-//       cargarEgresos();
-//       } 
-//   }
-// }
 
 
 
