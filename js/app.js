@@ -5,6 +5,7 @@ const ingresos = [];
 
 //avance 4
 document.body.onload = cargarApp;
+
 //avance 4
 function cargarApp() {
   cargarCabecero();
@@ -92,7 +93,7 @@ const crearIngresoHTML = (ingreso) => {
       <div class="elemento_descripcion">${egreso.descripcion}</div>
       <div class="derecha limpliarEstilos">
           <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
-          <div class="elemento_porcentaje">${formatoPorcentaje(porcentajeEgreso)}</div>
+          <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor/sumarEgresos())}</div>
           <div class="elemento_eliminar">
               <button class="elemento_eliminar--btn">
                   <ion-icon name="close-circle-outline" onclick='eliminarEgreso(${egreso.id})'></ion-icon>
