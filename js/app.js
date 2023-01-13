@@ -29,10 +29,10 @@ const formatoPorcentaje = (valor) => {
 }
 
 //Avance 4
-var presupuesto = sumarIngresos(ingresos) - sumarEgresos(egresos);
-var porcentajeEgreso = sumarEgresos(egresos) / sumarIngresos(ingresos);
 
 function cargarCabecero() {
+  let presupuesto = sumarIngresos() - sumarEgresos();
+  let porcentajeEgreso = sumarEgresos() / sumarIngresos();
   const presupuestoElement = document.getElementById('presupuesto');
   const porcentajeElement = document.getElementById('porcentaje');
   const ingresosElement = document.getElementById('ingresos');
@@ -79,8 +79,8 @@ const crearIngresoHTML = (ingreso) => {
   const cargarEgresos = () => {
     let egresosHTML = '';
   
-    for (const engreso of egresos) {
-      egresosHTML += crearIngresoHTML(engreso);
+    for (const egreso of egresos) {
+      egresosHTML += crearEgresoHTML(egreso);
     }
     document.getElementById('lista-egresos').innerHTML = egresosHTML;
   }
@@ -148,127 +148,19 @@ let agregarDato = () => {
 }
 
 
-
   //avance3
-  function sumarIngresos(ingresos) {
+  function sumarIngresos() {
     let total = 0;
-    for (const propiedad of ingresos) {
-      total += propiedad.valor;
+    for (let ingreso of ingresos) {
+      total += ingreso.valor;
     }
     return total;
   }
   
-  function sumarEgresos(egresos) {
+  function sumarEgresos() {
     let total = 0;
-    for (const egreso of egresos) {
+    for (let egreso of egresos) {
       total += egreso.valor;
     }
     return total;
   }
-
-// // avance 3
-// function cargarCabecero() {
-//     var presupuesto = sumarIngresos(ingresos) - sumarEgresos(egresos);
-//     var porcentajeEgreso = sumarEgresos(egresos) / sumarIngresos(ingresos);
-//     console.log(formatoMoneda(presupuesto));
-//     console.log(formatoPorcentaje(porcentajeEgreso));
-//     console.log(formatoMoneda(sumarIngresos(ingresos)));
-//     console.log(formatoMoneda(sumarEgresos(egresos)));
-
-//   };
-
-
-// // avance2 PRUEBAS
-// const ingresos = {
-  //   Quincena: 9000,
-  //   Venta: 400
-  // };
-
-
-  // const egresos= {
-    //     Renta: 900,
-//     Ropa:400
-// };
-
-//avance 2
-// function cargarCabecero() {
-//     var presupuesto = totalIngresos(ingresos) - totalEgresos(egresos);
-//     var porcentajeEgreso = totalEgresos(egresos) / totalIngresos(ingresos);
-//     console.log(formatoMoneda(presupuesto));
-//     console.log(formatoPorcentaje(porcentajeEgreso));
-//     console.log(formatoMoneda(totalIngresos(ingresos)));
-//     console.log(formatoMoneda(totalEgresos(egresos)));
-
-// };
-
- //avance 2
-// const formatoMoneda = (valor) => {
-//   return valor.toLocaleString("es-MX", {style: "currency", currency: "MXN", minimumFractionDigits: 2});
-// }
-// const formatoPorcentaje = (valor) => {
-//   return valor.toLocaleString("es-MX", {style: "percent", minimumFractionDigits: 2});
-// }
-
-
-//avance2
-// function totalIngresos(ingresos) {
-//   let total = 0;
-//   for (const ingreso in ingresos) {
-//     total += ingresos[ingreso];
-//   }
-//   return total;
-// }
-
-// function totalEgresos(egresos) {
-//   let total = 0;
-//   for (const egreso in egresos) {
-//     total += egresos[egreso];
-//   }
-//   return total;
-// };
-
-// // Clase para calcular el total de ingresos
-// class TotalIngresos {
-//   constructor() {
-//     this.totalIngresos = 0;
-//   }
-
-//   // Método para calcular el total de ingresos
-//    calcularTotalIngresos(ingresos) {
-//     for (const ingreso of ingresos) {
-//       this.totalIngresos += ingreso.valor;
-//     }
-//   }
-// }
-
-// // Clase para calcular el total de egresos
-// class TotalEgresos {
-//   constructor() {
-//     this.totalEgresos = 0;
-//   }
-
-//   // Método para calcular el total de egresos
-//   calcularTotalEgresos(egresos) {
-//     for (const egreso of egresos) {
-//       this.totalEgresos += egreso.valor;
-//     }
-//   }
-// }
-
-// const totalIngresos = () => {
-//     var totalIngresos = 0;
-//     for (var value in ingreso){
-//         totalIngresos += ingreso[value];
-//     }
-//     return totalIngresos;
-// };
-
-
-
-// const totalEgresos = () => {
-//     var totalEgresos = 0;
-//     for (var value in egresos){
-//         totalEgresos += egresos[value];
-//     }
-//     return totalEgresos;
-// };
